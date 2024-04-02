@@ -61,6 +61,7 @@ request.onload=function(){
         console.log('Total population of countries:', res);
 
 }
+*/
 
 //Print the country that uses US dollars as currency.
 const request = new XMLHttpRequest();
@@ -69,10 +70,7 @@ request.send();
 request.onload=function(){
     var data = request.response;
     var result = JSON.parse(data)
-    var res= result.find(country => {
-        const currencies = Object.values(country.currencies);
-        return currencies.includes('USD');
-    });
-    console.log('Country that uses US dollars:',res);
+    var curr=result.filter((ele)=>ele.currencies && ele.currencies.USD)
+    curr.forEach((value)=>console.log(value.name.common))
 }
-*/
+
